@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Layout -->
+    <string name="app_name">EmojiLock</string>
+    <color name="backgroundColor">#00FFFFFF</color>
+    <string name="sourceWeight">4</string>
+    <string name="inputWeight">1</string>
+    <string name="miscWeight">.01</string>
+    <string name="borderPadding">15dp</string>
+    
+    <!-- Constants -->
+    <string name="password_file_key">com.example.emojilock.PASSWORD</string>
+    
+    <!-- Preferences -->    
+    <string name="ordering_key">com.emojilock.ordering</string>
+    <string name="ordering_title">Ordered</string>
+    <string name="ordering_summary">Check whether or not order matters for the lock</string>
+    <string name="ordering_default">true</string>
+    
+    <string name="enable_key">com.emojilock.enabled</string>
+    <string name="enable_title">Enable</string>
+    <string name="enable_summary">Check to enable the lock screen and create a password</string>
+    <string name="enable_default">false</string>
+    <string name="title_activity_lock_screen">LockScreen</string>
+    <string name="action_settings">Settings</string>    
+
+
+</resources>

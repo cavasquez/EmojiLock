@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/backgroundView"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+	android:background="@color/backgroundColor"
+    android:orientation="vertical" >
+
+	<!-- This layout will contain the "body" and "emote" to be used as input --> 
+	<GridView
+        android:id="@+id/sourceGrid"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="@string/sourceWeight"
+        android:orientation="vertical"
+        android:numColumns="4" >
+    </GridView>
+    <!-- This layout will contian the input used to unlock the phone --> 
+	<GridView
+        android:id="@+id/inputGrid"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="@string/inputWeight"
+        android:orientation="vertical"
+        android:numColumns="3" >
+    </GridView>
+    
+</LinearLayout>

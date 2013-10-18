@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/backgroundView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	android:background="@color/backgroundColor"
+    android:orientation="vertical" >
+    
+    <!-- This View will be used for deletions -->
+	<GridView
+        android:id="@+id/trashGrid"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_weight="@string/miscWeight"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:numColumns="1" >
+    </GridView>
+    
+    <!-- This View will contian the input used to unlock the phone -->
+	<GridView
+        android:id="@+id/inputGrid"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_weight="@string/inputWeight"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:numColumns="8" >
+    </GridView>
+    
+	<!-- This View will contain the "body" and "emote" to be used as input -->
+	<GridView
+        android:id="@+id/sourceGrid"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_weight="@string/sourceWeight"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:numColumns="4" >
+    </GridView>
+    
+	<!-- This view will be used to accept a new lock -->
+	<GridView
+        android:id="@+id/unlockGrid"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_weight="@string/miscWeight"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:numColumns="1" >
+    </GridView>
+    
+</LinearLayout>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	
+    <CheckBoxPreference
+        android:key="@string/ordering_key"
+        android:title="@string/ordering_title"
+        android:summary="@string/ordering_summary"
+        android:defaultValue="@string/ordering_default" 
+        android:dependency="@string/enable_key" />
+	    
+    <CheckBoxPreference
+        android:key="@string/enable_key"
+        android:title="@string/enable_title"
+        android:summary="@string/enable_summary"
+        android:defaultValue="@string/enable_default"
+        android:disableDependentsState="true"  />
+        
+</PreferenceScreen>
