@@ -22,7 +22,7 @@ public class Hasher
 	private static final String HASH = "SHA-512";
 	public static final int SALT_BYTE_SIZE = 64;		// 512 bits
     public static final int HASH_BYTE_SIZE = 64;		// 512 bits
-    public static final int HASH_ITERATIONS = 5;
+    public static final int HASH_ITERATIONS = 20000;
     
     /*************************** Class Methods ***************************/
     /**
