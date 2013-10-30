@@ -6,7 +6,7 @@ import com.emojilock.lockscreen.controller.Controller;
 import com.emojilock.lockscreen.listeners.TouchListener;
 
 /*****************************************************************************************************
- * UnlockOnTouchListener will define the OnTouchListener to be used by the unlockGrid GridView 
+ * UnlockOnTouchListener will define the OnTouchListener to be used by the unlockGrid GridView.
  *****************************************************************************************************/
 
 public class UnlockOnTouchListener extends TouchListener
@@ -45,5 +45,14 @@ public class UnlockOnTouchListener extends TouchListener
 		/* do nothing */
 		return false;
 	} /* end move method */
+	
+	/**
+	 * Check to see if this miss exceeds
+	 * @return
+	 */
+	private boolean check()
+	{
+		return true;
+	} /* end check method */
 
 } /* end UnlockOnTouchListener class */
