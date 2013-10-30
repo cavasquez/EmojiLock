@@ -3,7 +3,6 @@ package com.emojilock.lockscreen;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.telephony.TelephonyManager;
 import com.emojilock.lockscreen.controller.Controller;
 import com.emojilock.lockscreen.lock.Vault;
 

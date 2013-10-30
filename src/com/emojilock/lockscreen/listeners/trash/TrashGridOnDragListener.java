@@ -1,5 +1,7 @@
 package com.emojilock.lockscreen.listeners.trash;
 
+import java.util.Arrays;
+
 import android.view.DragEvent;
 import android.view.View;
 
@@ -50,6 +52,7 @@ public class TrashGridOnDragListener extends DragListener
 		controller.input().setDrawables(MetaInputGrid.BODY, controller.drag().getBodyDrawables());
 		controller.input().setDrawables(MetaInputGrid.EMOTE, controller.drag().getEmoteDrawables());
 		controller.input().notifyDataSetChanged();
+		controller.drag().setPivot(null); // This will ensure that InputOnDragListener does not reset the drawables
 		
 		// Next, remove the input
 		controller.input().remove(controller.drag().getPosition());

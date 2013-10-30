@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.widget.ImageView;
-
 import com.emojilock.lockscreen.controller.Controller;
 import com.emojilock.lockscreen.listeners.input.InputOnDragListener;
 import com.emojilock.lockscreen.listeners.input.InputOnTouchListener;
@@ -34,7 +33,7 @@ public class InputAdapter extends ImageAdapter
 		Integer emote = controller.input().getDrawableID(position, MetaInputGrid.EMOTE);
 		Integer body = controller.input().getDrawableID(position, MetaInputGrid.BODY);
 		
-		if (emote == null & body == null)
+		if (emote == null && body == null)
 		{// In this case, return a blank ImageView
 			imageView.setImageResource(controller.source().getDrawableID(0, 0)); // get random image
 			imageView.setAlpha(INVISIBLE);

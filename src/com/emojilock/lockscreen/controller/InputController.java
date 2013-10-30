@@ -63,6 +63,12 @@ public class InputController extends LockController
 		((MetaInputGrid) meta).replaceInput(id, type, position);
 	} /* end replaceInput method */
 	
+	/**
+	 * Removes input of the given type at the given position from the data structure
+	 * @param type		input type (BODY or EMOTE)
+	 * @param position	position of input
+	 * @return			success or failure of removal
+	 */
 	public boolean removeInput(int type, int position)
 	{
 		return ((MetaInputGrid) meta).removeInput(type, position);

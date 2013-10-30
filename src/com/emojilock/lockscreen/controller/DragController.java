@@ -84,5 +84,4 @@ public class DragController
 		return drag.getBodyDrawables();
 	} /* end getBodyDrawables method */
 	
-	
 } /* end DragController class */

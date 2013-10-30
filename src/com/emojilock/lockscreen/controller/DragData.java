@@ -1,5 +1,7 @@
 package com.emojilock.lockscreen.controller;
 
+import java.util.Arrays;
+
 import android.view.View;
 
 import com.emojilock.lockscreen.LockScreen;
@@ -11,14 +13,14 @@ import com.emojilock.lockscreen.LockScreen;
 public class DragData
 {
 	/*************************** Class Attributes ***************************/
-	private LockScreen.VIEW viewType;	// The view prividng the "item(s)"
-	private int position;				// The position of the "item" on the grid
-	private int id;						// The id of the "item"
-	private int type;					// The type of the "item"
-	private View view;					// The view being dragged
-	private Integer pivot;				// The pivot (blank spot) used when dragging an input
-	private Integer[] emoteDrawables;	// A copy of the original emote drawables
-	private Integer[] bodyDrawables;	// A copy of the original body drawbles
+	private LockScreen.VIEW viewType;		// The view prividng the "item(s)"
+	private int position;					// The position of the "item" on the grid
+	private int id;							// The id of the "item"
+	private int type;						// The type of the "item"
+	private View view;						// The view being dragged
+	private Integer pivot;					// The pivot (blank spot) used when dragging an input
+	private Integer[] emoteDrawables;		// A copy of the original emote drawables
+	private Integer[] bodyDrawables;		// A copy of the original body drawbles
 	
 	/*************************** Class Methods ***************************/
 	private DragData(View view, LockScreen.VIEW viewType, int position, int id, int type)

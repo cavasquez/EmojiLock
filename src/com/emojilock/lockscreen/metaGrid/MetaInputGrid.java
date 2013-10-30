@@ -121,6 +121,8 @@ public class MetaInputGrid extends MetaGrid
 		meta[EMOTE].remove(position);
 		meta[BODY].remove(position);
 		this.removeDrawable(position);
+		/*this.printEmote();
+		this.printBody();*/
 	} /* end remove method */
 	
 	public void removeDrawable(int position)
@@ -129,13 +131,20 @@ public class MetaInputGrid extends MetaGrid
 		drawableID[BODY].remove(position);
 	} /* end removeDrawable method */
 	
+	/**
+	 * @deprecated
+	 * @param type
+	 * @param position
+	 * @return
+	 */
 	public boolean removeInput(int type, int position)
 	{
+		System.out.println("fail?");
 		boolean fail = false; // check for failures in the process
 		// First, check to see if the position is out of bounds
 		if(position > size || size < 0) fail = true;	// the position cannot surpass the size the the grid
 		
-		// Second, check to see if the "item" is the last "item" in the position (ie, only body or only emote
+		// Second, check to see if the "item" is the last "item" in the position (ie, only body or only emote)
 		else if (meta[invert(type)].get(position) == null)
 		{// The last "item" is being removed. shift everything to the left and decrement size
 			remove(position);
@@ -145,7 +154,6 @@ public class MetaInputGrid extends MetaGrid
 			meta[type].set(position, null);
 			drawableID[type].set(position, null);
 		} /* end else */
-	
 		return fail;
 		
 	} /* end removeInput method */
@@ -163,6 +171,7 @@ public class MetaInputGrid extends MetaGrid
 	
 	public void printDrawables()
 	{
+		System.out.println("MetaInputGrid drawable size: " + drawableID[BODY].size() + " " + drawableID[EMOTE].size());
 		System.out.println("MetaInputGrid B Drawables: " + drawableID[BODY].toString());
 		System.out.println("MetaInputGrid E Drawables: " + drawableID[EMOTE].toString());
 	} /* end printDrawables method */

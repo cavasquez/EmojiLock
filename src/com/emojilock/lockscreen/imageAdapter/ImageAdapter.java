@@ -3,8 +3,11 @@ package com.emojilock.lockscreen.imageAdapter;
 import com.emojilock.lockscreen.controller.Controller;
 
 import android.content.Context;
+import android.graphics.Point;
+import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -25,13 +28,19 @@ public abstract class ImageAdapter extends BaseAdapter
 	protected static final int RIGHT = 2;
 	protected static final int BOTTOM = 3;
 	
+	/* Constants vars for determining layoutWidht and layoutHeight */
+	private final int maxNumOfColumns = 8;
+	private final float paddingCoefficient = 5;
+	private final float widthCoefficient = 160;
+	private final float borderCoefficient = 60;
+	
 	/*************************** Class Attributes ***************************/
 	protected static Controller controller;										// The controller
 	protected Context context;													// The Context for this adapter
 	protected ImageView.ScaleType scaleType = ImageView.ScaleType.CENTER_CROP;	// The scale type to be used by the GridView. Default to Center Crop
-	protected int layoutWidth = 160;											// LayoutWidth of Gridview
-	protected int layoutHeight = 160;											// LayoutHeight of GridView
-	protected int padding[] = {10, 40, 10, 40};									// Padding to be used by ImageView
+	protected int layoutWidth;													// LayoutWidth of Gridview
+	protected int layoutHeight;													// LayoutHeight of GridView
+	protected int padding[] = {40, 40, 40, 40};									// Padding to be used by ImageView
 	
 	/*************************** Abstract Methods ***************************/
 	protected abstract ImageView interpret(ImageView imageView, int position);
@@ -46,6 +55,22 @@ public abstract class ImageAdapter extends BaseAdapter
 	{
 		this.context = context;
 		ImageAdapter.controller = controller;
+		
+		// Get screen size and set layoutWidth, layoutHeight, and padding
+		WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+		Display display = wm.getDefaultDisplay();
+		Point size = new Point();
+		display.getSize(size);
+		int width = size.x;
+		float ratio = this.calculateWidth(width);
+		this.layoutWidth = (int) (widthCoefficient * ratio);
+		this.layoutHeight = this.layoutWidth;
+		padding[0] = (int) (paddingCoefficient * ratio);
+		padding[1] = padding[0];
+		padding[2] = padding[0];
+		padding[3] = padding[0];
+		
+		
 	} /* end overloaded constructor */
 	
 	@Override
@@ -54,7 +79,6 @@ public abstract class ImageAdapter extends BaseAdapter
 	@Override
 	public Object getItem(int position) 
 	{
-		// TODO Auto-generated method stub
 		return null;
 	} /* end getItem method */
 
@@ -96,6 +120,18 @@ public abstract class ImageAdapter extends BaseAdapter
 		
 		return returner;
 	} /* end createView method */
+	
+	/**
+	 * Calculates the maximum width of the ImageView
+	 * @return	maximum width of the ImageView
+	 */
+	private final float calculateWidth(int screenWidth)
+	{
+		int numOfPadding = maxNumOfColumns + 1;
+		float denominator = (widthCoefficient * maxNumOfColumns) + (numOfPadding * paddingCoefficient) + (2 * borderCoefficient);
+		float width = screenWidth / denominator;
+		return width;
+	} /* end calculateWidth */
 	
 	/*************************** Getters and Setters ***************************/	
 	public void setLayoutParams(int width, int height)

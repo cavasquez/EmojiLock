@@ -50,6 +50,13 @@ public class MetaSourceGrid extends MetaGrid
 		
 	} /* end overloaded constructor */
 	
+	/*************************** Prints ***************************/
+	public void print()
+	{
+		System.out.println("MetaSourceGrid ID: " + meta[SOURCE_ID].toString());
+		System.out.println("MetaSourceGrid Type: " + meta[SOURCE_TYPE].toString());
+	} /* end printBody method */
+	
 	/************** Public Methods **************/
 	public void initialize()
 	{

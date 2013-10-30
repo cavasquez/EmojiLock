@@ -27,4 +27,9 @@ public class SourceController extends LockController
 		return ((MetaSourceGrid) meta).getDrawableID(position, type);
 	} /* end getDrawableID method */
 	
+	public void print()
+	{
+		((MetaSourceGrid) meta).print();
+	} /* end print method */
+	
 } /* end SourceController class */
