@@ -62,11 +62,9 @@ public class UnlockOnTouchListener extends TouchListener
 		
 		// Get login fail count
 		if (this.loginFailCount == null) this.loginFailCount = share.getInt(LOCKOUT_COUNT_KEY, 0);
-		System.out.println("UnlockOnTouchListener.click: " + loginFailCount);
+		
 		if(this.unlocked)
 		{// User successfully signed in. Clear fail count
-			System.out.println("UnlockOnTouchListener.click: " + LockScreen.isProduction());
-			System.out.println("UnlockOnTouchListener.click: " + this.loginFailCount);
 			if(LockScreen.isProduction() && this.loginFailCount != 0)
 			{
 				this.loginFailCount = 0;
@@ -81,7 +79,7 @@ public class UnlockOnTouchListener extends TouchListener
 			this.loginFailCount++;
 			editor.putInt(LOCKOUT_COUNT_KEY, this.loginFailCount);
 			editor.commit();
-			System.out.println("UnlockOnTouchListener.click: check after " + loginFailCount);
+
 			// Check to see if still locked out
 			if(loginFailCount != 0 && loginFailCount % LOCKOUT_INTERVAL == 0)
 			{ /* Lock out */

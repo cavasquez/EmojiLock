@@ -61,7 +61,6 @@ public class ProductionLockScreen extends LockScreen
 			if (currentTime < endTime)
 			{// User is locked out. Lock user out
 				this.lockout(currentTime, endTime);
-				System.out.println("ProductionLockScreen.checkLockoutStatus: remaining time is " + (endTime - currentTime));
 			} /* end if */
 			
 		} /* end if */
