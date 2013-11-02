@@ -24,6 +24,9 @@
     <string name="enable_default">false</string>
     <string name="title_activity_lock_screen">LockScreen</string>
     <string name="action_settings">Settings</string>    
-
+    
+    <!-- Lockout -->
+	<string name="lockout_message1">Too many login attempts failed.</string>
+	<string name="lockout_message2">To login again, wait:</string>
 
 </resources>

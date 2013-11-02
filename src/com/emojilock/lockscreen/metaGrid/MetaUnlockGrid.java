@@ -11,11 +11,15 @@ public class MetaUnlockGrid extends MetaGrid
 	/*************************** Class Constants ***************************/
 	private static final int UNLOCK = R.drawable.unlock;		// The trash drawable id. trash.png was created with Android Asset Studio
 	
+	/*************************** Class Attributes ***************************/
+	private boolean locked;					// Locked status
+	
 	/*************************** Class Methods ***************************/
 	public MetaUnlockGrid() 
 	{
 		super(1);
 		meta[0].add(UNLOCK);
+		this.locked = false;
 	} /* end constructor */
 
 	@Override
@@ -35,5 +39,30 @@ public class MetaUnlockGrid extends MetaGrid
 	{
 		return getID(position, type);
 	} /* end getDrawableID method */
-
+	
+	/**
+	 * Set lock
+	 */
+	public void lock()
+	{
+		this.locked = true;
+	} /* end lock method */
+	
+	/**
+	 * Remove lock
+	 */
+	public void unlock()
+	{
+		this.locked = false;
+	} /* end unlock method */
+	
+	/**
+	 * Return locked status
+	 * @return	locked status
+	 */
+	public boolean isLocked()
+	{
+		return this.locked;
+	} /* end isLocked method */
+	
 } /* end MetaUnlockGrid */

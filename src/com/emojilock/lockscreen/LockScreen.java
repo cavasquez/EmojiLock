@@ -45,7 +45,9 @@ public abstract class LockScreen extends Activity
 	public static final String PREFERENCE_NAME = "com.enojilock"; // SharedPreference
 	
 	protected static final boolean ORDERED = true;
-	protected static final boolean UNORDERED = false;
+	
+	/*************************** Class Attributes***************************/
+	protected static boolean production;
 	
 	/*************************** Class Methods ***************************/
 	/************** Abstract Methods **************/
@@ -55,6 +57,15 @@ public abstract class LockScreen extends Activity
 	public abstract void makeLock(Controller controller, Activity parent);
 	
 	/************** Public Methods **************/
+	/**
+	 * Return whether or not the lockscreen is a production screen
+	 * @return	production status
+	 */
+	public static boolean isProduction()
+	{
+		return LockScreen.production;
+	} /* end isProduction method */
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
 	{

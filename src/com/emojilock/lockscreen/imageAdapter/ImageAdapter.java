@@ -65,10 +65,10 @@ public abstract class ImageAdapter extends BaseAdapter
 		float ratio = this.calculateWidth(width);
 		this.layoutWidth = (int) (widthCoefficient * ratio);
 		this.layoutHeight = this.layoutWidth;
-		padding[0] = (int) (paddingCoefficient * ratio);
-		padding[1] = padding[0];
-		padding[2] = padding[0];
-		padding[3] = padding[0];
+		padding[LEFT] = (int) (paddingCoefficient * ratio);
+		padding[RIGHT] = padding[LEFT];
+		padding[TOP] = padding[LEFT];
+		padding[BOTTOM] = padding[TOP];
 		
 		
 	} /* end overloaded constructor */

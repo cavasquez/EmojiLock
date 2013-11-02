@@ -22,7 +22,17 @@ public class UnlockAdapter extends ImageAdapter
 	{
 		Integer id = controller.unlock().getDrawableID(position, null);	// type does not matter
 		imageView.setImageResource(id);
-		imageView.setAlpha(VISIBLE);
+		/* Check to see if phone has time out */
+		if(controller.unlock().isLocked())
+		{// Phone is locked, do not display padlock icon
+			imageView.setAlpha(INVISIBLE);
+		} /* end if */
+		else
+		{// Phone is not locked, display padlock icon
+			
+			imageView.setAlpha(VISIBLE);
+		} /* end else */
+		
 		return imageView;
 	} /* end ImageView method */
 

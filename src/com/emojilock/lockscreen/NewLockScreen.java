@@ -23,6 +23,7 @@ public class NewLockScreen extends LockScreen
 	public void makeLock(Controller controller, Activity parent) 
 	{
 		SharedPreferences pref = parent.getSharedPreferences(LockScreen.PREFERENCE_NAME, Context.MODE_PRIVATE);
+		LockScreen.production = false;
 		
 		// Create a new salt and store it
 		SharedPreferences.Editor editor = pref.edit();

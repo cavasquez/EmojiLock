@@ -1,9 +1,6 @@
 package com.emojilock.lockscreen.controller;
 
-import java.util.Arrays;
-
 import android.view.View;
-
 import com.emojilock.lockscreen.LockScreen;
 
 /*****************************************************************************************************

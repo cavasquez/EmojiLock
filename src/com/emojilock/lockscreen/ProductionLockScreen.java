@@ -22,10 +22,7 @@ public class ProductionLockScreen extends LockScreen
 		SharedPreferences pref = parent.getSharedPreferences(LockScreen.PREFERENCE_NAME, Context.MODE_PRIVATE);
 		controller.makeVault(Vault.Type.REAL, pref);
 		
-		// Not quite making a lock, but implementing production "features"
-		// Set the phone state listener
-		//TelephonyManager telephonyManager = (TelephonyManager)getSystemService(TELEPHONY_SERVICE);
-		//telephonyManager.listen(new LockScreenPhoneStateListener(controller), LockScreenPhoneStateListener.LISTEN_CALL_STATE);
+		LockScreen.production = true;
 		
 	} /* end makeLock method */
 	

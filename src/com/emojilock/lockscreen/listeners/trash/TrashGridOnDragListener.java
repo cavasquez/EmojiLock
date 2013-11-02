@@ -1,10 +1,7 @@
 package com.emojilock.lockscreen.listeners.trash;
 
-import java.util.Arrays;
-
 import android.view.DragEvent;
 import android.view.View;
-
 import com.emojilock.lockscreen.controller.Controller;
 import com.emojilock.lockscreen.listeners.DragListener;
 import com.emojilock.lockscreen.metaGrid.MetaInputGrid;

@@ -45,10 +45,14 @@ public final class R {
         public static final int unlock=0x7f020012;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a0005;
+        public static final int action_settings=0x7f0a0009;
         public static final int backgroundView=0x7f0a0000;
         public static final int inputGrid=0x7f0a0002;
+        public static final int lockoutLayout=0x7f0a0005;
         public static final int sourceGrid=0x7f0a0003;
+        public static final int text1=0x7f0a0006;
+        public static final int text2=0x7f0a0007;
+        public static final int text_time=0x7f0a0008;
         public static final int trashGrid=0x7f0a0001;
         public static final int unlockGrid=0x7f0a0004;
     }
@@ -56,6 +60,7 @@ public final class R {
         public static final int activity_display_message=0x7f030000;
         public static final int activity_lock_screen=0x7f030001;
         public static final int activity_main=0x7f030002;
+        public static final int lockout=0x7f030003;
     }
     public static final class menu {
         public static final int lock_screen=0x7f090000;
@@ -72,6 +77,10 @@ public final class R {
         public static final int enable_summary=0x7f06000c;
         public static final int enable_title=0x7f06000b;
         public static final int inputWeight=0x7f060002;
+        /**  Lockout 
+         */
+        public static final int lockout_message1=0x7f060010;
+        public static final int lockout_message2=0x7f060011;
         public static final int miscWeight=0x7f060003;
         public static final int ordering_default=0x7f060009;
         /**  Preferences 
