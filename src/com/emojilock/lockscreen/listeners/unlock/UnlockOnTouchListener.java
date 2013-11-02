@@ -53,10 +53,23 @@ public class UnlockOnTouchListener extends TouchListener
 	{
 		// Reset color background and unlock if input is correct
 		view.setBackgroundColor(GREEN);
+		
+		if(this.share == null)
+		{
+			share = PreferenceManager.getDefaultSharedPreferences(view.getContext());
+			editor = share.edit();
+		} /* end if */
+		
+		// Get login fail count
+		if (this.loginFailCount == null) this.loginFailCount = share.getInt(LOCKOUT_COUNT_KEY, 0);
+		System.out.println("UnlockOnTouchListener.click: " + loginFailCount);
 		if(this.unlocked)
 		{// User successfully signed in. Clear fail count
-			if(LockScreen.isProduction() && ( loginFailCount != 0 || loginFailCount != null ) )
+			System.out.println("UnlockOnTouchListener.click: " + LockScreen.isProduction());
+			System.out.println("UnlockOnTouchListener.click: " + this.loginFailCount);
+			if(LockScreen.isProduction() && this.loginFailCount != 0)
 			{
+				this.loginFailCount = 0;
 				editor.putInt(LOCKOUT_COUNT_KEY, 0);
 				editor.commit();
 			} /* end if */
@@ -64,14 +77,7 @@ public class UnlockOnTouchListener extends TouchListener
 		} /* end if */
 		else if(LockScreen.isProduction())
 		{// User failed in production lock. Increment attempt count and check to see if user is locked out
-			if(this.share == null)
-			{
-				share = PreferenceManager.getDefaultSharedPreferences(view.getContext());
-				editor = share.edit();
-			} /* end if */
-			
-			// Get the number of times user failed to login and increment
-			if (loginFailCount == null) this.loginFailCount = share.getInt(LOCKOUT_COUNT_KEY, 0);
+			// Increment the number of failed logins
 			this.loginFailCount++;
 			
 			// Check to see if still locked out
@@ -122,7 +128,7 @@ public class UnlockOnTouchListener extends TouchListener
 	 * @param loginFailCount	total number of failed 
 	 * @return					length of lockout
 	 */
-	private final long calculateTimeout(int loginFailCount)
+	public final long calculateTimeout(int loginFailCount)
 	{
 		long returner = 0;
 		int lockoutCount = loginFailCount / LOCKOUT_INTERVAL;
