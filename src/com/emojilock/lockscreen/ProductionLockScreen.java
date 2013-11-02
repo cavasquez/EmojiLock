@@ -26,4 +26,20 @@ public class ProductionLockScreen extends LockScreen
 		
 	} /* end makeLock method */
 	
+	/**
+	 * Checks to see if u locked out. If so, lockout the user
+	 */
+	private void checkLockoutStatus()
+	{
+		
+	} /* end checkLockoutStatus method */
+	
+	/**
+	 * Lockout the user based on the remaining time
+	 */
+	private void lockout()
+	{
+		
+	} /* end lockout method */
+	
 } /* end ProductionLockScreen class */
