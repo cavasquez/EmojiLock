@@ -34,7 +34,14 @@ public class LockoutTimer extends CountDownTimer
 	@Override
 	public void onFinish() 
 	{
-		this.popup.dismiss();
+		try 
+		{
+			this.popup.dismiss();
+			this.popup = null;
+	    } catch (Exception e) {
+	        /* do nothing */
+	    } /* end catch */
+		
 	} /* end onFinish method */
 
 	@Override

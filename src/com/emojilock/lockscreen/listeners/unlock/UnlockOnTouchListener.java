@@ -21,7 +21,7 @@ public class UnlockOnTouchListener extends TouchListener
 	/*************************** Class Constants ***************************/
 	public static final String LOCKOUT_COUNT_KEY = "com.example.emojilock.lockout_count";
 	public static final String LOCKOUT_START_KEY = "com.example.emojilock.lockout_start";
-	private static final int LOCKOUT_INTERVAL = 5;		// Number of failed attempts before lockout enabled
+	public static final int LOCKOUT_INTERVAL = 5;		// Number of failed attempts before lockout enabled
 	
 	/*************************** Class Attributes ***************************/
 	private boolean unlocked;
@@ -79,7 +79,9 @@ public class UnlockOnTouchListener extends TouchListener
 		{// User failed in production lock. Increment attempt count and check to see if user is locked out
 			// Increment the number of failed logins
 			this.loginFailCount++;
-			
+			editor.putInt(LOCKOUT_COUNT_KEY, this.loginFailCount);
+			editor.commit();
+			System.out.println("UnlockOnTouchListener.click: check after " + loginFailCount);
 			// Check to see if still locked out
 			if(loginFailCount != 0 && loginFailCount % LOCKOUT_INTERVAL == 0)
 			{ /* Lock out */
@@ -103,11 +105,6 @@ public class UnlockOnTouchListener extends TouchListener
 				lt.start();
 				
 			} /* end if */
-			else
-			{ /* Not locked out, store new count */
-				editor.putInt(LOCKOUT_COUNT_KEY, this.loginFailCount);
-				editor.commit();
-			} /* end else */
 			
 		} /* end else */
 		
@@ -128,7 +125,7 @@ public class UnlockOnTouchListener extends TouchListener
 	 * @param loginFailCount	total number of failed 
 	 * @return					length of lockout
 	 */
-	public final long calculateTimeout(int loginFailCount)
+	public static final long calculateTimeout(int loginFailCount)
 	{
 		long returner = 0;
 		int lockoutCount = loginFailCount / LOCKOUT_INTERVAL;
