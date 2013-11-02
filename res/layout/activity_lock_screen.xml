@@ -10,9 +10,11 @@
 	<GridView
         android:id="@+id/trashGrid"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:layout_weight="@string/miscWeight"
         android:orientation="vertical"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:gravity="center"
         android:numColumns="1" >
     </GridView>
@@ -36,6 +38,9 @@
         android:layout_weight="@string/sourceWeight"
         android:orientation="vertical"
         android:gravity="center"
+        android:verticalSpacing="10dp"
+        android:horizontalSpacing="10dp"
+        android:stretchMode="spacingWidthUniform"
         android:numColumns="4" >
     </GridView>
     
@@ -43,9 +48,11 @@
 	<GridView
         android:id="@+id/unlockGrid"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:layout_weight="@string/miscWeight"
         android:orientation="vertical"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:gravity="center"
         android:numColumns="1" >
     </GridView>

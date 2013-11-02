@@ -70,7 +70,6 @@ public abstract class ImageAdapter extends BaseAdapter
 		padding[TOP] = padding[LEFT];
 		padding[BOTTOM] = padding[TOP];
 		
-		
 	} /* end overloaded constructor */
 	
 	@Override
@@ -114,9 +113,11 @@ public abstract class ImageAdapter extends BaseAdapter
 	protected ImageView createView()
 	{
 		ImageView returner = new ImageView(context);
-		returner.setLayoutParams(new GridView.LayoutParams(layoutWidth, layoutHeight));
+		GridView.LayoutParams params = new GridView.LayoutParams(layoutWidth, layoutHeight);
+		//params.setMargins(padding[LEFT], padding[TOP], padding[RIGHT], padding[BOTTOM]);
+		returner.setLayoutParams(params);
 		returner.setScaleType(scaleType);
-		returner.setPadding(padding[LEFT], padding[TOP], padding[RIGHT], padding[BOTTOM]);
+		//returner.setPadding(padding[LEFT], padding[TOP], padding[RIGHT], padding[BOTTOM]);
 		
 		return returner;
 	} /* end createView method */
