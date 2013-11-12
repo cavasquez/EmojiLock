@@ -40,7 +40,6 @@ public class LockoutRunnable implements Runnable
 	public void run() 
 	{
 		// Create popup that will warn user about lockout
-		System.out.println("LockoutRunnable.run: called");
 		LayoutInflater li = (LayoutInflater) this.view.getContext().getSystemService(LockScreen.LAYOUT_INFLATER_SERVICE);
 		View popup = li.inflate(R.layout.lockout, null);
 		LockoutPopup lp = new LockoutPopup(popup);
@@ -48,20 +47,16 @@ public class LockoutRunnable implements Runnable
 		
 		// Create LockoutTimer which will countdown the lockout and dismiss it
 		LockoutRunnable.lt = new LockoutTimer(this.endTime - this.currentTime, lp);
-		System.out.println("LockoutRunnable.run: lt created");
 		LockoutRunnable.lt.start();
-		System.out.println("LockoutRunnable.run: ended");
 	} /* end run method */
 	
 	public void interrupt()
 	{
 		if(LockoutRunnable.lt != null)
 		{
-			System.out.println("LockoutRunnable.interrupt: lockout timer not null");
 			LockoutRunnable.lt.stop();
 			LockoutRunnable.lt = null;
 		} /* end if */
-		else System.out.println("LockoutRunnable.interrupt: lockout timer is null");
 		
 	} /* end interrupt method */
 	

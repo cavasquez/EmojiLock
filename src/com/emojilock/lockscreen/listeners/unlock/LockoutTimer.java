@@ -34,10 +34,8 @@ public class LockoutTimer extends CountDownTimer
 	public void stop()
 	{
 		super.cancel();
-		System.out.println("LockoutTimer.stop: popup is " + popup + " starting");
 		if(this.popup != null)
 		{
-			System.out.println("LockoutTimer.stop: popup not null, calling dismiss");
 			try 
 			{
 				this.popup.dismiss();
@@ -45,8 +43,7 @@ public class LockoutTimer extends CountDownTimer
 		    } catch (Exception e) {
 		        /* do nothing */
 		    } /* end catch */
-		}
-		System.out.println("LockoutTimer.stop: called");
+		} /* end if */
 		
 	} /* end cancel method */
 	
@@ -56,7 +53,6 @@ public class LockoutTimer extends CountDownTimer
 	@Override
 	public void onFinish() 
 	{
-		System.out.println("LockoutTimer.onFInish: called");
 		try 
 		{
 			this.popup.dismiss();

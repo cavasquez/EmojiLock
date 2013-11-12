@@ -33,11 +33,8 @@ public class ProductionLockScreen extends LockScreen
 	protected void onStart()
 	{
 		super.onStart();
-		System.out.println("ProductionLockScreen.onStart: called");
 		this.lockout = new LockoutRunnable();
 		
-//		this.checkLockoutStatus();
-		System.out.println("ProductionLockScreen.onStart: ended");
 	}/* end onResume */
 	
 	@Override
@@ -46,18 +43,18 @@ public class ProductionLockScreen extends LockScreen
 		// Make the real lock
 		SharedPreferences pref = parent.getSharedPreferences(LockScreen.PREFERENCE_NAME, Context.MODE_PRIVATE);
 		controller.makeVault(Vault.Type.REAL, pref);
-		
 		LockScreen.production = true;
 		
 	} /* end makeLock method */
 	
+	/**
+	 * Check for lockout and perform lockout if necessarry
+	 */
 	@Override
 	public void onResume()
 	{
 		super.onResume();
-		System.out.println("ProductionLockScreen.onResume: called");
 		this.checkLockoutStatus();
-		System.out.println("ProductionLockScreen.onResume: ended");
 	} /* end onResume method */
 	
 	/**
@@ -67,24 +64,15 @@ public class ProductionLockScreen extends LockScreen
 	public void onPause()
 	{
 		super.onPause();
-		System.out.println("ProductionLockScreen.onPause: called");
-//		if(ProductionLockScreen.lt != null)
-//		{
-//			System.out.println("ProductionLockScreen.onPause: lockout not null");
-//			ProductionLockScreen.lt.stop();
-//			
-//		}
-		System.out.println("ProductionLockScreen.onPause: called");
+
 		if(this.lockout != null)
 		{
 			View view = this.findViewById(R.id.sourceGrid);
-			
-			System.out.println("ProductionLockScreen.onPause: lockout not null");
 			this.lockout.interrupt();
 			view.removeCallbacks(this.lockout);
 			
-		}
-		System.out.println("ProductionLockScreen.onPause: ended");
+		} /* end if */
+
 	} /* end onPause method */
 	
 	/**
@@ -124,8 +112,6 @@ public class ProductionLockScreen extends LockScreen
 		View view = this.findViewById(R.id.sourceGrid);
 		this.lockout.Initialize(view, currentTime, endTime);
 		view.post(this.lockout);
-
-		
 	} /* end lockout method */
 	
 } /* end ProductionLockScreen class */
