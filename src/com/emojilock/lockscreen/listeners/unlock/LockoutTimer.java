@@ -29,11 +29,34 @@ public class LockoutTimer extends CountDownTimer
 	} /* end constructor */
 
 	/**
+	 * Cancels the CountDownTimer and closes the popup
+	 */
+	public void stop()
+	{
+		super.cancel();
+		System.out.println("LockoutTimer.stop: popup is " + popup + " starting");
+		if(this.popup != null)
+		{
+			System.out.println("LockoutTimer.stop: popup not null, calling dismiss");
+			try 
+			{
+				this.popup.dismiss();
+				this.popup = null;
+		    } catch (Exception e) {
+		        /* do nothing */
+		    } /* end catch */
+		}
+		System.out.println("LockoutTimer.stop: called");
+		
+	} /* end cancel method */
+	
+	/**
 	 * Dismiss the popup
 	 */
 	@Override
 	public void onFinish() 
 	{
+		System.out.println("LockoutTimer.onFInish: called");
 		try 
 		{
 			this.popup.dismiss();
@@ -43,6 +66,7 @@ public class LockoutTimer extends CountDownTimer
 	    } /* end catch */
 		
 	} /* end onFinish method */
+	
 
 	@Override
 	public void onTick(long millisUntilFinished) 

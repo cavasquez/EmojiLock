@@ -9,6 +9,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import com.emojilock.R;
 import com.emojilock.lockscreen.LockScreen;
+import com.emojilock.lockscreen.LockoutRunnable;
+import com.emojilock.lockscreen.ProductionLockScreen;
 import com.emojilock.lockscreen.controller.Controller;
 import com.emojilock.lockscreen.listeners.TouchListener;
 
@@ -100,6 +102,7 @@ public class UnlockOnTouchListener extends TouchListener
 
 				// Create LockoutTimer which will countdown the lockout and dismiss it
 				LockoutTimer lt = new LockoutTimer(lockoutTime, lp);
+				LockoutRunnable.setLockoutTimer(lt); // Super important
 				lt.start();
 				
 			} /* end if */
