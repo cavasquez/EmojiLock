@@ -10,7 +10,6 @@ import android.view.View;
 import com.emojilock.R;
 import com.emojilock.lockscreen.LockScreen;
 import com.emojilock.lockscreen.LockoutRunnable;
-import com.emojilock.lockscreen.ProductionLockScreen;
 import com.emojilock.lockscreen.controller.Controller;
 import com.emojilock.lockscreen.listeners.TouchListener;
 
@@ -115,7 +114,7 @@ public class UnlockOnTouchListener extends TouchListener
 	@Override
 	protected boolean move(View view, MotionEvent motionEvent) 
 	{
-		/* do nothing */
+		view.setBackgroundColor(GREEN);
 		return false;
 	} /* end move method */
 	

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Background modified from: http://www.androidwallpaperhd.com/cool-vista-themes-64/ -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/lockView"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-	android:background="@color/backgroundColor"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+	android:background="@drawable/background"
     android:orientation="vertical" >
     
     <!-- This View will be used for deletions -->
@@ -12,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="@string/miscWeight"
+        android:isScrollContainer="false"
         android:orientation="vertical"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
@@ -19,16 +21,41 @@
         android:numColumns="1" >
     </GridView>
     
+	<!-- Top border -->
+	<View
+        android:layout_width="fill_parent"
+        android:layout_height="0.2dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/inputGridTop"
+        android:visibility="visible"
+        android:background="@android:color/darker_gray"/>
+	
     <!-- This View will contian the input used to unlock the phone -->
-	<GridView
+       <GridView
         android:id="@+id/inputGrid"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_weight="@string/inputWeight"
+        android:layout_height="wrap_content"
+        android:minHeight="150dp"
         android:orientation="vertical"
         android:gravity="center"
-        android:numColumns="8" >
-    </GridView>
+        android:verticalSpacing="10dp"
+        android:numColumns="6"
+        android:rowCount="1" >
+   	</GridView>
+	
+    
+	<!-- Bottom border -->
+	<View
+        android:layout_width="fill_parent"
+        android:layout_height="0.2dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/inputGridBottom"
+        android:visibility="visible"
+        android:background="@android:color/darker_gray"/>
+	
+
     
 	<!-- This View will contain the "body" and "emote" to be used as input -->
 	<GridView
@@ -41,15 +68,17 @@
         android:verticalSpacing="10dp"
         android:horizontalSpacing="10dp"
         android:stretchMode="spacingWidthUniform"
-        android:numColumns="4" >
+        android:numColumns="4" 
+        android:rowCount="4" >
     </GridView>
+    
+
     
 	<!-- This view will be used to accept a new lock -->
 	<GridView
         android:id="@+id/unlockGrid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="@string/miscWeight"
         android:orientation="vertical"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"

@@ -14,9 +14,9 @@ public abstract class TouchListener implements OnTouchListener
 {
 	/*************************** Class Constants ***************************/
 	public static final int CLEAR = 0x00000000;		// A clear color
-	public static final int BLUE = 0x7724EAE7;		// A tealish color with some transparency	
-	public static final int GREEN = 0x7709BA19;		// A green color
-	public  static final int RED = 0x77D00F0F;		// A Red color with some transparency
+	public static final int BLUE = 0x5524EAE7;		// A tealish color with some transparency	
+	public static final int GREEN = 0x5509BA19;		// A green color
+	public  static final int RED = 0x55D00F0F;		// A Red color with some transparency
 	private static final int CLICK_DEVIATION = 25;	// The max change for an action to be considered a click
 	
 	/*************************** Class Attributes ***************************/

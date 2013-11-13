@@ -1,7 +1,6 @@
 package com.emojilock.lockscreen.imageAdapter;
 
 import com.emojilock.lockscreen.controller.Controller;
-
 import android.content.Context;
 import android.graphics.Point;
 import android.view.Display;
@@ -29,10 +28,10 @@ public abstract class ImageAdapter extends BaseAdapter
 	protected static final int BOTTOM = 3;
 	
 	/* Constants vars for determining layoutWidht and layoutHeight */
-	private final int maxNumOfColumns = 8;
+	private final int maxNumOfColumns = 6;
 	private final float paddingCoefficient = 5;
 	private final float widthCoefficient = 160;
-	private final float borderCoefficient = 60;
+	private final float borderCoefficient = 90;
 	
 	/*************************** Class Attributes ***************************/
 	protected static Controller controller;										// The controller

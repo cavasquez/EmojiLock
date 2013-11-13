@@ -3,7 +3,8 @@
 
     <!-- Layout -->
     <string name="app_name">EmojiLock</string>
-    <color name="backgroundColor">#00FFFFFF</color>
+    <color name="backgroundColor">#FFFFFFFF</color>
+    <color name="black">#00000000</color>
     <string name="sourceWeight">4</string>
     <string name="inputWeight">1</string>
     <string name="miscWeight">.01</string>

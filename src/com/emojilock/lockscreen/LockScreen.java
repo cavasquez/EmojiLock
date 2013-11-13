@@ -213,6 +213,8 @@ public abstract class LockScreen extends Activity
 		
 		// Make key
 		this.makeKey(controller);
+		
+
 	} /* end initialize method */
 
 } /* end LockScreen Activity */

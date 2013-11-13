@@ -13,6 +13,7 @@
         android:layout_height="fill_parent"
         android:layout_weight="@string/sourceWeight"
         android:orientation="vertical"
+        android:background="@color/backgroundColor"
         android:numColumns="4" >
     </GridView>
     <!-- This layout will contian the input used to unlock the phone --> 
