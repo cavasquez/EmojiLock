@@ -15,8 +15,6 @@ public class TrashAdapter extends ImageAdapter
 	public TrashAdapter(Context context, Controller controller) 
 	{
 		super(context, controller);
-		this.padding[ImageAdapter.TOP] = padding[ImageAdapter.RIGHT] * 10;
-		this.padding[ImageAdapter.BOTTOM] = this.padding[ImageAdapter.TOP];
 	} /* end overloaded constructor */
 
 	@Override

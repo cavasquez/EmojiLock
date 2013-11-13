@@ -5,7 +5,8 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
 	android:background="@drawable/background"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:minHeight="200dp" >
     
     <!-- This View will be used for deletions -->
 	<GridView
@@ -23,7 +24,7 @@
     
 	<!-- Top border -->
 	<View
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="0.2dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
@@ -40,6 +41,7 @@
         android:orientation="vertical"
         android:gravity="center"
         android:verticalSpacing="10dp"
+
         android:numColumns="6"
         android:rowCount="1" >
    	</GridView>
@@ -47,21 +49,19 @@
     
 	<!-- Bottom border -->
 	<View
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="0.2dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:id="@+id/inputGridBottom"
         android:visibility="visible"
         android:background="@android:color/darker_gray"/>
-	
-
     
 	<!-- This View will contain the "body" and "emote" to be used as input -->
 	<GridView
         android:id="@+id/sourceGrid"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+		android:layout_height="wrap_content"
         android:layout_weight="@string/sourceWeight"
         android:orientation="vertical"
         android:gravity="center"
@@ -72,13 +72,12 @@
         android:rowCount="4" >
     </GridView>
     
-
-    
 	<!-- This view will be used to accept a new lock -->
 	<GridView
         android:id="@+id/unlockGrid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="@string/miscWeight"
         android:orientation="vertical"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"

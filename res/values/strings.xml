@@ -7,7 +7,7 @@
     <color name="black">#00000000</color>
     <string name="sourceWeight">4</string>
     <string name="inputWeight">1</string>
-    <string name="miscWeight">.01</string>
+    <string name="miscWeight">.001</string>
     <string name="borderPadding">15dp</string>
     
     <!-- Constants -->

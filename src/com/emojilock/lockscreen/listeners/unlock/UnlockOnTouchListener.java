@@ -54,6 +54,7 @@ public class UnlockOnTouchListener extends TouchListener
 	{
 		// Reset color background and unlock if input is correct
 		view.setBackgroundColor(GREEN);
+		System.out.println("Unlock: height = " + view.getMeasuredHeight());
 		
 		if(this.share == null)
 		{

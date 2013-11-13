@@ -17,8 +17,7 @@ public class SourceAdapter extends ImageAdapter
 	public SourceAdapter(Context context) 
 	{
 		this(context, null);
-		this.padding[ImageAdapter.TOP] = padding[ImageAdapter.RIGHT] * 10;
-		this.padding[ImageAdapter.BOTTOM] = this.padding[ImageAdapter.TOP];
+
 	} /* end constructor */
 	
 	public SourceAdapter(Context context, Controller controller)

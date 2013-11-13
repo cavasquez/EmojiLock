@@ -2,11 +2,8 @@ package com.emojilock.lockscreen.imageAdapter;
 
 import com.emojilock.lockscreen.controller.Controller;
 import android.content.Context;
-import android.graphics.Point;
-import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -27,19 +24,12 @@ public abstract class ImageAdapter extends BaseAdapter
 	protected static final int RIGHT = 2;
 	protected static final int BOTTOM = 3;
 	
-	/* Constants vars for determining layoutWidht and layoutHeight */
-	private final int maxNumOfColumns = 6;
-	private final float paddingCoefficient = 5;
-	private final float widthCoefficient = 160;
-	private final float borderCoefficient = 90;
-	
 	/*************************** Class Attributes ***************************/
 	protected static Controller controller;										// The controller
 	protected Context context;													// The Context for this adapter
 	protected ImageView.ScaleType scaleType = ImageView.ScaleType.CENTER_CROP;	// The scale type to be used by the GridView. Default to Center Crop
-	protected int layoutWidth;													// LayoutWidth of Gridview
-	protected int layoutHeight;													// LayoutHeight of GridView
-	protected int padding[] = {40, 40, 40, 40};									// Padding to be used by ImageView
+	protected static int layoutWidth;											// LayoutWidth of Gridview
+	protected static int layoutHeight;											// LayoutHeight of GridView
 	
 	/*************************** Abstract Methods ***************************/
 	protected abstract ImageView interpret(ImageView imageView, int position);
@@ -54,20 +44,6 @@ public abstract class ImageAdapter extends BaseAdapter
 	{
 		this.context = context;
 		ImageAdapter.controller = controller;
-		
-		// Get screen size and set layoutWidth, layoutHeight, and padding
-		WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-		Display display = wm.getDefaultDisplay();
-		Point size = new Point();
-		display.getSize(size);
-		int width = size.x;
-		float ratio = this.calculateWidth(width);
-		this.layoutWidth = (int) (widthCoefficient * ratio);
-		this.layoutHeight = this.layoutWidth;
-		padding[LEFT] = (int) (paddingCoefficient * ratio);
-		padding[RIGHT] = padding[LEFT];
-		padding[TOP] = padding[LEFT];
-		padding[BOTTOM] = padding[TOP];
 		
 	} /* end overloaded constructor */
 	
@@ -112,40 +88,22 @@ public abstract class ImageAdapter extends BaseAdapter
 	protected ImageView createView()
 	{
 		ImageView returner = new ImageView(context);
-		GridView.LayoutParams params = new GridView.LayoutParams(layoutWidth, layoutHeight);
-		//params.setMargins(padding[LEFT], padding[TOP], padding[RIGHT], padding[BOTTOM]);
+		GridView.LayoutParams params = new GridView.LayoutParams(ImageAdapter.layoutWidth, ImageAdapter.layoutHeight);
 		returner.setLayoutParams(params);
 		returner.setScaleType(scaleType);
-		//returner.setPadding(padding[LEFT], padding[TOP], padding[RIGHT], padding[BOTTOM]);
-		
 		return returner;
 	} /* end createView method */
 	
-	/**
-	 * Calculates the maximum width of the ImageView
-	 * @return	maximum width of the ImageView
-	 */
-	private final float calculateWidth(int screenWidth)
-	{
-		int numOfPadding = maxNumOfColumns + 1;
-		float denominator = (widthCoefficient * maxNumOfColumns) + (numOfPadding * paddingCoefficient) + (2 * borderCoefficient);
-		float width = screenWidth / denominator;
-		return width;
-	} /* end calculateWidth */
-	
 	/*************************** Getters and Setters ***************************/	
-	public void setLayoutParams(int width, int height)
+	public static void setLayoutParams(int width, int height)
 	{
-		this.layoutWidth = width;
-		this.layoutHeight = height;
+		ImageAdapter.layoutWidth = width;
+		ImageAdapter.layoutHeight = height;
 	} /* end setLayoutParams method */
 	
-	public void setPadding(int left, int top, int right, int bottom)
+	public static int getLayoutParam()
 	{
-		this.padding[LEFT] = left;
-		this.padding[TOP] = top;
-		this.padding[RIGHT] = right;
-		this.padding[BOTTOM] = bottom;
-	} /* end setPadding method */
+		return ImageAdapter.layoutHeight;
+	} /* end getLayoutParam method */
 	
 } /* end SourceView class */

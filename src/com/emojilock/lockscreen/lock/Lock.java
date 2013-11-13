@@ -30,6 +30,7 @@ public abstract class Lock
 	{
 		this.share = share;
 		this.controller = controller;
+		this.salt = null;
 	} /* end constructor */
 	
 	/**
@@ -38,8 +39,8 @@ public abstract class Lock
 	 */
 	protected String getSalt()
 	{
-		String salt = share.getString(SALT_FILE_KEY, null);
-		return salt;
+		if (this.salt == null) this.salt = share.getString(SALT_FILE_KEY, null);
+		return this.salt;
 	} /* end getSalt method */
 
 	/**

@@ -39,16 +39,6 @@ public abstract class LockController
 	
 	/* Adapter methods */
 	
-	public void setLayoutParams(int width, int height)
-	{
-		adapter.setLayoutParams(width, height);
-	} /* end setLayoutParams method */
-	
-	public void setPadding(int left, int top, int right, int bottom)
-	{
-		adapter.setPadding(left, top, right, bottom);
-	} /* end setPadding method */
-	
 	public void notifyDataSetChanged()
 	{
 		adapter.notifyDataSetChanged();

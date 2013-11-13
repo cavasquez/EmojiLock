@@ -3,7 +3,12 @@ package com.emojilock.lockscreen.imageAdapter;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+
+import com.emojilock.R;
 import com.emojilock.lockscreen.controller.Controller;
 import com.emojilock.lockscreen.listeners.input.InputOnDragListener;
 import com.emojilock.lockscreen.listeners.input.InputOnTouchListener;
@@ -15,11 +20,14 @@ import com.emojilock.lockscreen.metaGrid.MetaInputGrid;
 
 public class InputAdapter extends ImageAdapter
 {	
-	/*************************** Class Methods ***************************/
+	/*************************** Public Attributes ***************************/
+	private boolean wrapSet;
+	
 	/*************************** Public Methods ***************************/
 	public InputAdapter(Context context)
 	{
 		super(context);
+		this.wrapSet = false;
 	} /* end constructor */
 	
 	public InputAdapter(Context context, Controller controller) 
@@ -60,7 +68,25 @@ public class InputAdapter extends ImageAdapter
 	@Override
 	public int getCount() 
 	{
-		return controller.input().getSize();
+		int size = controller.input().getSize();
+		/* Resize the inputGrid accodringly */
+		if(size == 0 && wrapSet)
+		{
+			// Set height of view
+			GridView inputGrid = (GridView) controller.getLockScreen().findViewById(R.id.inputGrid);
+			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, ImageAdapter.layoutHeight);
+			inputGrid.setLayoutParams(params);
+			this.wrapSet = false;
+		} /* end if */
+		else if(!wrapSet && size > 0)
+		{
+			// Set Wrap
+			GridView inputGrid = (GridView) controller.getLockScreen().findViewById(R.id.inputGrid);
+			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+			inputGrid.setLayoutParams(params);
+			this.wrapSet = true;
+		} /* end else */
+		return size;
 	} /* end getCount method */
 	
 	/*************************** Private Methods ***************************/

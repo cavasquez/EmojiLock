@@ -2,6 +2,7 @@ package com.emojilock.lockscreen;
 
 import com.emojilock.R;
 import com.emojilock.lockscreen.controller.Controller;
+import com.emojilock.lockscreen.imageAdapter.ImageAdapter;
 import com.emojilock.lockscreen.imageAdapter.InputAdapter;
 import com.emojilock.lockscreen.imageAdapter.SourceAdapter;
 import com.emojilock.lockscreen.imageAdapter.TrashAdapter;
@@ -19,11 +20,14 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.app.Activity;
 import android.content.SharedPreferences;
+import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.GridView;
+import android.widget.LinearLayout;
 
 /*****************************************************************************************************
  * LockScreen will be the Activity that contains the actual Lock Screen. It 
@@ -169,6 +173,9 @@ public abstract class LockScreen extends Activity
 				R.drawable.body_6, R.drawable.body_7
 			};
 		
+		// Set params
+		this.setImageParams();
+		
 		// Create controller
 		Controller controller = new Controller();
 		controller.setLockScreen(this);
@@ -190,12 +197,14 @@ public abstract class LockScreen extends Activity
 		controller.setSourceController(sourceMeta, sourceAdapter);
 		controller.setTrashController(trashMeta, trashAdapter);
 		controller.setUnlockController(unlockMeta, unlockAdapter);
-				
+		
 		// Prepare the GridViews
 		GridView sourceGrid = (GridView) findViewById(R.id.sourceGrid);
 		sourceGrid.setAdapter(sourceAdapter);
 		
 		GridView inputGrid = (GridView) findViewById(R.id.inputGrid);
+		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, this.getParamHeight());
+		inputGrid.setLayoutParams(params);
 		inputGrid.setAdapter(inputAdapter);		
 		inputGrid.setOnDragListener(new InputGridOnDragListener(controller));
 		
@@ -214,7 +223,29 @@ public abstract class LockScreen extends Activity
 		// Make key
 		this.makeKey(controller);
 		
-
 	} /* end initialize method */
+	
+	private final void setImageParams()
+	{
+		int size = this.getParamHeight();
+		ImageAdapter.setLayoutParams(size, size);
+	} /* end setImageParams method */
+	
+	private final int getParamHeight()
+	{
+		int returner = 0;
+		
+		// Find screen density to provide layout sizes
+		DisplayMetrics metrics = new DisplayMetrics();
+		this.getWindowManager().getDefaultDisplay().getMetrics(metrics);
+		int density = metrics.densityDpi;
+		if (density == DisplayMetrics.DENSITY_XXHIGH) returner = 145;
+		else if (density == DisplayMetrics.DENSITY_XHIGH) returner = 145;
+		else if (density == DisplayMetrics.DENSITY_HIGH) returner = 145;
+		else if (density == DisplayMetrics.DENSITY_MEDIUM) returner = 95;
+		else if (density == DisplayMetrics.DENSITY_LOW) returner = 70;
+		
+		return returner;
+	} /* end getHeight method */
 
 } /* end LockScreen Activity */
